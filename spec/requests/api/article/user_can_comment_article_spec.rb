@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe 'POST /api/comments', type: :request do
+  
   describe 'with valid credentials' do
     let!(:user) { create(:user) }
     let(:user_credentials) { user.create_new_auth_token }
@@ -13,14 +14,14 @@ RSpec.describe 'POST /api/comments', type: :request do
     describe 'User can comment article' do
       before do
         post '/api/comments',
-             params: {
-               comment: {
-                 body: 'I love this article',
-                 article_id: article.id,
-                 user_id: user.id
-               }
-             },
-             headers: user_headers
+          params: {
+            comment: {
+              body: 'I love this article',
+              article_id: article.id,
+              user_id: user.id
+            }
+          },
+          headers: user_headers
       end
 
       it 'returns a 200 response' do
@@ -40,14 +41,14 @@ RSpec.describe 'POST /api/comments', type: :request do
     describe 'User cannot post empty comment' do
       before do
         post '/api/comments',
-             params: {
-               comment: {
-                 body: '',
-                 article_id: article.id,
-                 user_id: user.id
-               }
-             },
-             headers: user_headers
+          params: {
+            comment: {
+              body: '',
+              article_id: article.id,
+              user_id: user.id
+            }
+          },
+          headers: user_headers
       end
 
       it 'returns a 400 response' do
@@ -62,14 +63,14 @@ RSpec.describe 'POST /api/comments', type: :request do
     describe 'User cannot post comment without article id' do
       before do
         post '/api/comments',
-             params: {
-               comment: {
-                 body: 'I love this artice',
-                 article_id: nil,
-                 user_id: user.id
-               }
-             },
-             headers: user_headers
+          params: {
+            comment: {
+              body: 'I love this artice',
+              article_id: nil,
+              user_id: user.id
+            }
+          },
+          headers: user_headers
       end
 
       it 'returns a 400 response' do
@@ -87,13 +88,13 @@ RSpec.describe 'POST /api/comments', type: :request do
     let(:headers) { { HTTP_ACCEPT: 'application/json' } }
     before do
       post '/api/comments',
-           params: {
-             comment: {
-               body: 'I love this artice',
-               article_id: article.id
-             }
-           },
-           headers: headers
+        params: {
+          comment: {
+            body: 'I love this artice',
+            article_id: article.id
+          }
+        },
+        headers: headers
     end
 
     it 'returns 401 status' do
