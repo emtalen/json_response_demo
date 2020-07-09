@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
 
-  has_many :articles
+  has_many :articles, foreign_key: 'author_id'
   has_many :comments
 end
