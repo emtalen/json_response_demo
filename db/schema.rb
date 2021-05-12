@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 2020_10_07_092736) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "email"
+    t.string "name"
     t.json "tokens"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

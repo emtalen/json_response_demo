@@ -36,6 +36,7 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[6.0]
       t.string :current_sign_in_ip
       t.string :last_sign_in_ip
       t.string :email
+      t.string :name
 
       ## Tokens
       t.json :tokens
